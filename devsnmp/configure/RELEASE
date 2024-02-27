@@ -1,0 +1,5 @@
+
+EPICS_BASE = /usr/lib/epics
+
+TEMPLATE_TOP = $(EPICS_BASE)/templates/makeBaseApp/top
+

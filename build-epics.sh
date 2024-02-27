@@ -2,6 +2,11 @@
 set -e -x
 # Build epics-base and common support modules
 #
+# Debian 12 packages to build
+# build-essential autoconf automake libreadline-dev libncurses-dev 
+# libpcre3-dev libxml2-dev libjpeg-dev libxext-dev re2c libgraphicsmagick++1-dev 
+# libaec-dev libhdf5-dev libjpeg-dev libnetcdf-dev libtiff-dev libz3-dev python-is-python3
+#
 # Required Debian packages to build
 #  build-essential autoconf automake
 #  libreadline6-dev libncurses5-dev perl
@@ -180,6 +185,10 @@ ASYN=\$(EPICS_BASE)/../asyn
 EPICS_BASE=\$(TOP)/../epics-base
 EOF
 
+cat <<EOF >devSnmp/configure/RELEASE
+EPICS_BASE=\$(TOP)/../epics-base
+EOF
+
 trap 'rm -f $PREFIX $TAR' TERM KILL HUP EXIT
 
 rm -f $PREFIX
@@ -220,6 +229,7 @@ do_module calc
 do_module stream BUILD_PCRE=NO
 do_module etherip
 do_module modbus
+do_module devsnmp
 
 tar -rf $TAR $PREFIX/*.version
 
