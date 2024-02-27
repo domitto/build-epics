@@ -65,3 +65,7 @@
 [submodule "pvxs"]
 	path = pvxs
 	url = https://github.com/mdavidsaver/pvxs
+[submodule "p4p"]
+	path = p4p
+	url = https://github.com/mdavidsaver/p4p.git
+	branch = master
