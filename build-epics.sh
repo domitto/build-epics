@@ -94,6 +94,7 @@ git_module iocstats
 git_module sscan
 git_module etherip
 git_module modbus
+git_module p4p
 
 export EPICS_HOST_ARCH=`./epics-base/startup/EpicsHostArch`
 
@@ -185,7 +186,12 @@ ASYN=\$(EPICS_BASE)/../asyn
 EPICS_BASE=\$(TOP)/../epics-base
 EOF
 
-cat <<EOF >devSnmp/configure/RELEASE
+cat <<EOF >devsnmp/configure/RELEASE
+EPICS_BASE=\$(TOP)/../epics-base
+EOF
+
+cat <<EOF >p4p/configure/RELEASE.local
+PVXS=\$(TOP)/../pvxs
 EPICS_BASE=\$(TOP)/../epics-base
 EOF
 
@@ -230,6 +236,7 @@ do_module stream BUILD_PCRE=NO
 do_module etherip
 do_module modbus
 do_module devsnmp
+do_module p4p
 
 tar -rf $TAR $PREFIX/*.version
 
